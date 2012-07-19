@@ -1,5 +1,5 @@
 # Specify phone tech before including full_phone
-$(call inherit-product, vendor/cm/config/gsm.mk)
+$(call inherit-product, vendor/codefire/config/gsm.mk)
 
 # Release name
 PRODUCT_RELEASE_NAME := holiday
@@ -9,14 +9,14 @@ TARGET_BOOTANIMATION_PRELOAD := true
 TARGET_BOOTANIMATION_NAME := vertical-540x960
 
 # Inherit some common CM stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+$(call inherit-product, vendor/codefire/config/common_full_phone.mk)
 
 # Inherit device configuration
 $(call inherit-product, device/htc/holiday/device_holiday.mk)
 
 # Device naming
 PRODUCT_DEVICE := holiday
-PRODUCT_NAME := cm_holiday
+PRODUCT_NAME := cf_holiday
 PRODUCT_BRAND := htc
 PRODUCT_MODEL := HTC Vivid
 PRODUCT_MANUFACTURER := HTC
