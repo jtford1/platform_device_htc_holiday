@@ -111,6 +111,9 @@ ro.ril.set.mtu1472 = 1
 # For the default value of agps
 ro.ril.def.agps.mode = 2
 
+# System prop for switching gps driver to qmi
+persist.gps.qmienabled=true
+
 # for BT HCI transport
 ro.qualcomm.bt.hci_transport=smd
 
