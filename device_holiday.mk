@@ -16,7 +16,7 @@
 
 
 PRODUCT_AAPT_CONFIG := normal hdpi
-PRODUCT_AAPT_PREF_CONFIG := hdpi
+PRODUCT_AAPT_PREF_CONFIG := hdpivold
 
 # common msm8660 configs
 $(call inherit-product, device/htc/msm8660-common/msm8660.mk)
@@ -187,8 +187,9 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 
 PRODUCT_LOCALES += en
 
+# fstab for internal & external sd
 PRODUCT_COPY_FILES += \
-    device/htc/holiday/prebuilt/system/etc/vold.fstab:system/etc/vold.fstab
+    device/htc/holiday/configs/vold.fstab:system/etc/vold.fstab
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
