@@ -11,10 +11,7 @@ on early-fs
     mkdir /cache 0770 system cache
     mkdir /devlog 0700 root root
 
-    mount ext4 /dev/block/mmcblk0p29 /system wait ro
-    mount ext4 /dev/block/mmcblk0p34 /data wait noatime nosuid nodev nodelalloc
-    mount ext4 /dev/block/mmcblk0p35 /cache wait noatime nosuid nodev nodelalloc
-    mount ext4 /dev/block/mmcblk0p30 /devlog wait noatime nosuid nodev nodelalloc
+    mount_all fstab.holiday
 
     chown radio diag /dev/block/mmcblk0p16
     chmod 0460 /dev/block/mmcblk0p16
