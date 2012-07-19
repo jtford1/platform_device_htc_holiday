@@ -1,0 +1,128 @@
+# system.prop for holiday
+#
+
+# Qualcomm Display
+com.qc.hardware=true
+com.qc.hdmi_out=false
+ro.opengles.version = 131072
+ro.sf.compbypass.enable=1
+debug.composition.type=dyn
+debug.enabletr=true
+debug.sf.hw=1
+debug.egl.hw=1
+dev.pm.dyn_samplingrate=1
+debug.qctwa.statusbar = 1
+debug.qctwa.preservebuf = 1
+
+# Android Display
+windowsmgr.max_events_per_sec=240
+video.accelerate.hw=1
+ro.config.disable_hw_accel=false
+debug.performance.tuning=1
+debug.fb.rgb565=0
+debug.sf.hw=1
+
+ro.sf.lcd_density=240
+
+debug.fb.rgb565 = 0
+
+# RIL properties
+mobiledata.interfaces=rmnet0,rmnet1,gprs,ppp0
+rild.libpath=/system/lib/libril-qc-qmi-1.so
+rild.libargs=-d /dev/smd0
+DEVICE_PROVISIONED=1
+ro.telephony.ril_class=HTCQualcommRIL
+ro.telephony.ril.v3=singlepdp,qcomuiccstack
+ro.baseband.arch=msm
+persist.rild.nitz_plmn=
+persist.rild.nitz_long_ons_0=
+persist.rild.nitz_long_ons_1=
+persist.rild.nitz_long_ons_2=
+persist.rild.nitz_long_ons_3=
+persist.rild.nitz_short_ons_0=
+persist.rild.nitz_short_ons_1=
+persist.rild.nitz_short_ons_2=
+persist.rild.nitz_short_ons_3=
+persist.rild.ril.ltedr=0
+persist.rild.ril.ltedrtable=max_retries=infinite,10000
+
+# system props for the data modules
+#
+ro.use_data_netmgrd=true
+persist.data_netmgrd_nint=11
+
+# holiday RF team request	
+ro.ril.enable.dtm = 0	  	
+ro.ril.gprsclass = 12	  	
+ro.ril.hsdpa.category = 14	  	
+ro.ril.hsupa.category = 6	  	
+ro.ril.hsxpa = 4	  	
+ro.ril.enable.amr.wideband=1	  	
+ro.ril.enable.r8fd=1	  	
+ro.ril.radio.svn=5  	
+ro.ril.fast.dormancy.rule=1  	
+ro.ril.disable.mcc.filter=1  	
+ro.ril.disable.fd.plmn.prefix=23402,23410,23411,23420
+ro.telephony.default_network=0
+ro.ril.ciq=1
+persist.pdn.profile=pta
+ro.ril.disable.cpc=1
+ro.ril.enable.sdr=0
+ro.ril.enable.gea3=1
+ro.ril.enable.ucsq=2
+ro.ril.set.mtusize=1410
+ro.ril.multirab.throttling=1
+htc.audio.global.state=0
+htc.audio.q6.topology=0
+ro.ril.enable.prl.recognition = 1
+ro.ril.att.feature = 1
+
+# cm qcom build lub
+com.qc.hardware=true
+com.qc.hdmi_out=true
+
+# system props for telephony modules
+ro.config.lte=true
+# device supports simultaneous 1x voice + LTE
+# ro.config.svlte1x=true
+telephony.lteOnGsmDevice=1
+
+# audio
+persist.audio.fluence.mode=endfire
+persist.audio.vr.enable=false
+# lpa.decode=true
+# lpa.tunnel=true
+# lpa.use-stagefright=true
+
+# wifi
+wifi.interface=wlan0
+wifi.supplicant_scan_interval=60
+
+# This is a high density device with more memory, so larger vm heaps for it.
+dalvik.vm.heapgrowthlimit=64m
+dalvik.vm.heapsize=128m
+dalvik.vm.heapstartsize=5m
+
+#Modify MTU from 1500 to 1472 on 3G network
+ro.ril.set.mtu1472 = 1
+
+# For the default value of agps
+ro.ril.def.agps.mode = 2
+
+# for BT HCI transport
+ro.qualcomm.bt.hci_transport=smd
+
+# System property for cabl
+ro.qualcomm.cabl=0
+
+# For emmc phone storage
+ro.phone_storage = 0
+
+# support sdcard2
+ro.sdcard2 = 1
+
+# For adb on boot
+persist.service.adb.enable=1
+
+# Make rmt_storage start at init
+ro.emmc = 1
