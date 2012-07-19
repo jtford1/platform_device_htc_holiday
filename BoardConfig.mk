@@ -4,6 +4,9 @@
 # inherit proprietary files
 -include vendor/htc/holiday/BoardConfigVendor.mk
 
+# vold
+BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
+
 TARGET_BOOTLOADER_BOARD_NAME := holiday
 TARGET_NO_RADIOIMAGE := true
 
