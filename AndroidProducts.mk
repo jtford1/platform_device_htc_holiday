@@ -10,4 +10,4 @@
   #
   
   PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/codefire.mk \
+    $(LOCAL_DIR)/codefire.mk
