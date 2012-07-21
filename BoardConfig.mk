@@ -48,6 +48,12 @@ TARGET_PREBUILT_KERNEL := device/htc/holiday/prebuilt/kernel
 #TARGET_KERNEL_CONFIG := kangbang_defconfig
 #TARGET_KERNEL_SOURCE := kernel/htc/holiday
 
+# Touchscreen
+BOARD_USE_LEGACY_TOUCHSCREEN := true
+
+# GPS
+BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := holiday
+
 # Lights
 TARGET_PROVIDES_LIBLIGHTS := true
 
