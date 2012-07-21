@@ -4,6 +4,8 @@
 # inherit proprietary files
 -include vendor/htc/holiday/BoardConfigVendor.mk
 
+TARGET_SPECIFIC_HEADER_PATH := device/htc/holiday/include
+
 # vold
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 
@@ -13,8 +15,6 @@ TARGET_BOOTLOADER_BOARD_NAME := holiday
 TARGET_NO_RADIOIMAGE := true
 
 TARGET_EXTRA_CFLAGS += $(call cc-option,-march=armv7-a -mtune=cortex-a8)
-
-TARGET_SPECIFIC_HEADER_PATH := device/htc/msm8660-common/include
 
 # QCOMDisplay Flags
 COMMON_GLOBAL_CFLAGS += -DQCOM_ROTATOR_KERNEL_FORMATS
