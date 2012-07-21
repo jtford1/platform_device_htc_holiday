@@ -5,6 +5,7 @@
 -include vendor/htc/holiday/BoardConfigVendor.mk
 
 TARGET_SPECIFIC_HEADER_PATH := device/htc/holiday/include
+PRODUCT_VENDOR_KERNEL_HEADERS := device/htc/holiday/include
 
 # vold
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
