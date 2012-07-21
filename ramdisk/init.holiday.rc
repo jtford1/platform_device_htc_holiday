@@ -9,28 +9,24 @@ on early-init
     symlink /storage/sdcard1 /external_sd
     symlink /storage/sdcard1 /mnt/external_sd
 
-on early-fs
-    mkdir /system
-    mkdir /data 0771 system system
-    mkdir /cache 0770 system cache
+on emmc-fs
     mkdir /devlog 0700 root root
 
+    #8x60: firmware
+    rm /vendor
+    mkdir /vendor                   0771 system system
+    mkdir /vendor/etc               0771 system system
+    mkdir /vendor/firmware          0771 system system
+    mkdir /vendor/firmware/misc     0771 system system
+    mkdir /vendor/firmware/adsp     0771 system system
+    mkdir /vendor/firmware/misc_mdm 0771 system system
+
+    #mount the whole thing
     mount_all fstab.holiday
 
     chown radio diag /dev/block/mmcblk0p16
     chmod 0460 /dev/block/mmcblk0p16
 
-    #8x60: firmware
-    rm /vendor
-    mkdir /vendor               0771 system system
-    mkdir /vendor/etc           0771 system system
-    mkdir /vendor/firmware      0771 system system
-    mkdir /vendor/firmware/misc 0771 system system
-    mkdir /vendor/firmware/adsp 0771 system system
-    wait /dev/block/mmcblk0p17
-    wait /dev/block/mmcblk0p21
-    mount vfat /dev/block/mmcblk0p17 /vendor/firmware/misc ro shortname=lower
-    mount vfat /dev/block/mmcblk0p21 /vendor/firmware/adsp ro shortname=lower
     symlink /vendor/firmware/adsp/q6.b07 /vendor/firmware/q6.b07
     symlink /vendor/firmware/adsp/q6.b06 /vendor/firmware/q6.b06
     symlink /vendor/firmware/adsp/q6.b05 /vendor/firmware/q6.b05
@@ -52,9 +48,7 @@ on early-fs
     symlink /vendor/firmware/misc/modem.b01 /vendor/firmware/modem.b01
     symlink /vendor/firmware/misc/modem.b00 /vendor/firmware/modem.b00
     symlink /vendor/firmware/misc/modem.mdt /vendor/firmware/modem.mdt
-    mkdir /vendor/firmware/misc_mdm 0771 system system
 
-    mount vfat /dev/block/mmcblk0p18 /vendor/firmware/misc_mdm wait ro shortname=lower
     symlink /vendor/firmware/misc_mdm/image/amss.mbn /vendor/firmware/amss.mbn
     symlink /vendor/firmware/misc_mdm/image/dsp1.mbn /vendor/firmware/dsp1.mbn
     symlink /vendor/firmware/misc_mdm/image/dsp2.mbn /vendor/firmware/dsp2.mbn
