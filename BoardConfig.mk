@@ -4,6 +4,8 @@
 # inherit proprietary files
 -include vendor/htc/holiday/BoardConfigVendor.mk
 
+TARGET_SPECIFIC_HEADER_PATH := device/htc/msm8660-common/include
+
 # vold
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 
