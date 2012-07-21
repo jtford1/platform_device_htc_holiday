@@ -17,6 +17,12 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # common msm8960 configs
 $(call inherit-product, device/htc/msm8660-common/msm8660.mk)
 
+# Specify phone tech
+$(call inherit-product, vendor/codefire/config/gsm.mk)
+
+# inherit codefire stuff
+$(call inherit-product, vendor/codefire/config/common_full_phone.mk)
+
 DEVICE_PACKAGE_OVERLAYS += device/htc/holiday/overlay
 
 # Boot ramdisk setup
@@ -151,5 +157,15 @@ $(call inherit-product-if-exists, vendor/htc/holiday/holiday-vendor.mk)
 # call dalvik heap config
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
-PRODUCT_NAME := htc_holiday
+# Set build fingerprint / ID / Product Name etc.
+PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=htc_holiday BUILD_FINGERPRINT=cingular_us/htc_holiday/holiday:4.0.3/IML74K/302737.56:user/release-keys PRIVATE_BUILD_DESC="3.26.502.56 CL302737 release-keys"
+
+# Release name
+PRODUCT_RELEASE_NAME := holiday
+
+# Device naming
 PRODUCT_DEVICE := holiday
+PRODUCT_NAME := cf_holiday
+PRODUCT_BRAND := htc
+PRODUCT_MODEL := HTC Holiday
+PRODUCT_MANUFACTURER := HTC
