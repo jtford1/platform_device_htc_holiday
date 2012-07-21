@@ -14,7 +14,7 @@ TARGET_NO_RADIOIMAGE := true
 
 TARGET_EXTRA_CFLAGS += $(call cc-option,-march=armv7-a -mtune=cortex-a8)
 
-TARGET_SPECIFIC_HEADER_PATH := device/htc/holiday/include
+TARGET_SPECIFIC_HEADER_PATH := device/htc/msm8660-common/include
 
 # QCOMDisplay Flags
 COMMON_GLOBAL_CFLAGS += -DQCOM_ROTATOR_KERNEL_FORMATS
