@@ -1,6 +1,3 @@
-#
-# Copyright (C) 2011 The Evervolv Project
-#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -14,39 +11,30 @@
 # limitations under the License.
 #
 
-# Inherit Common
-$(call inherit-product, device/htc/holiday/BoardConfig.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-PRODUCT_AAPT_CONFIG := normal hdpi
-PRODUCT_AAPT_PREF_CONFIG := hdpi
-
-# common msm8660 configs
+# common msm8960 configs
 $(call inherit-product, device/htc/msm8660-common/msm8660.mk)
 
-# inherit qcom vendor
-$(call inherit-product, vendor/qcom/proprietary/qcom-vendor.mk)
+DEVICE_PACKAGE_OVERLAYS += device/htc/holiday/overlay
 
-# The gps config appropriate for this device
+# Boot ramdisk setup
 PRODUCT_COPY_FILES += \
-    device/common/gps/gps.conf_US:system/etc/gps.conf
+    device/htc/holiday/ramdisk/init.holiday.rc:root/init.holiday.rc \
+    device/htc/holiday/ramdisk/init.holiday.usb.rc:root/init.holiday.usb.rc \
+    device/htc/holiday/ramdisk/ueventd.holiday.rc:root/ueventd.holiday.rc \
+    device/htc/holiday/ramdisk/fstab.holiday:root/fstab.holiday
 
-## misc
-PRODUCT_PROPERTY_OVERRIDES += \
-    windowsmgr.max_events_per_sec=240 \
-    persist.sys.scrollingcache=3 \
-    ro.setupwizard.enable_bypass=1 \
-    dalvik.vm.lockprof.threshold=500 \
-    ro.com.google.locationfeatures=1 \
-    dalvik.vm.dexopt-flags=m=y
+# GPS config
+PRODUCT_COPY_FILES += device/common/gps/gps.conf_US:system/etc/gps.conf
 
-PRODUCT_COPY_FILES += \
-    device/htc/holiday/prebuilt/root/init.holiday.rc:root/init.holiday.rc \
-    device/htc/holiday/prebuilt/root/init.usb.rc:root/init.usb.rc \
-    device/htc/holiday/prebuilt/root/ueventd.holiday.rc:root/ueventd.holiday.rc \
-    device/htc/holiday/prebuilt/root/fstab.holiday:root/fstab.holiday
-
-# HTC BT Audio tune
+# HTC BT audio config
 PRODUCT_COPY_FILES += device/htc/holiday/configs/AudioBTID.csv:system/etc/AudioBTID.csv
+
+# vold config
+PRODUCT_COPY_FILES += \
+    device/htc/holiday/configs/vold.fstab:system/etc/vold.fstab
 
 # Sound DSP
 PRODUCT_COPY_FILES += \
@@ -98,119 +86,60 @@ PRODUCT_COPY_FILES += \
     device/htc/holiday/dsp/soundimage/srsfx_trumedia_music_wide.cfg:system/etc/soundimage/srsfx_trumedia_music_wide.cfg \
     device/htc/holiday/dsp/soundimage/srsfx_trumedia_voice.cfg:system/etc/soundimage/srsfx_trumedia_voice.cfg
 
-# Recovery Chargemode Support
+# Keylayouts and keychars
 PRODUCT_COPY_FILES += \
-    device/htc/holiday/prebuilt/recovery/root/sbin/choice_fn:recovery/root/sbin/choice_fn \
-    device/htc/holiday/prebuilt/recovery/root/sbin/detect_key:recovery/root/sbin/detect_key \
-    device/htc/holiday/prebuilt/recovery/root/sbin/offmode_charging:recovery/root/sbin/offmode_charging \
-    device/htc/holiday/prebuilt/recovery/root/sbin/htcbatt:recovery/root/sbin/htcbatt \
-    device/htc/holiday/prebuilt/recovery/root/sbin/power_test:recovery/root/sbin/power_test \
-    device/htc/holiday/prebuilt/recovery/root/res/offmode_charging_images/batt_0.png:recovery/root/res/offmode_charging_images/batt_0.png \
-    device/htc/holiday/prebuilt/recovery/root/res/offmode_charging_images/batt_100.png:recovery/root/res/offmode_charging_images/batt_100.png \
-    device/htc/holiday/prebuilt/recovery/root/res/offmode_charging_images/batt_10.png:recovery/root/res/offmode_charging_images/batt_10.png \
-    device/htc/holiday/prebuilt/recovery/root/res/offmode_charging_images/batt_20.png:recovery/root/res/offmode_charging_images/batt_20.png \
-    device/htc/holiday/prebuilt/recovery/root/res/offmode_charging_images/batt_30.png:recovery/root/res/offmode_charging_images/batt_30.png \
-    device/htc/holiday/prebuilt/recovery/root/res/offmode_charging_images/batt_40.png:recovery/root/res/offmode_charging_images/batt_40.png \
-    device/htc/holiday/prebuilt/recovery/root/res/offmode_charging_images/batt_50.png:recovery/root/res/offmode_charging_images/batt_50.png \
-    device/htc/holiday/prebuilt/recovery/root/res/offmode_charging_images/batt_5.png:recovery/root/res/offmode_charging_images/batt_5.png \
-    device/htc/holiday/prebuilt/recovery/root/res/offmode_charging_images/batt_60.png:recovery/root/res/offmode_charging_images/batt_60.png \
-    device/htc/holiday/prebuilt/recovery/root/res/offmode_charging_images/batt_70.png:recovery/root/res/offmode_charging_images/batt_70.png \
-    device/htc/holiday/prebuilt/recovery/root/res/offmode_charging_images/batt_80.png:recovery/root/res/offmode_charging_images/batt_80.png \
-    device/htc/holiday/prebuilt/recovery/root/res/offmode_charging_images/batt_90.png:recovery/root/res/offmode_charging_images/batt_90.png \
-    device/htc/holiday/prebuilt/recovery/root/res/offmode_charging_images/batt_95.png:recovery/root/res/offmode_charging_images/batt_95.png \
-    device/htc/holiday/prebuilt/recovery/root/res/offmode_charging_images/charging_00.png:recovery/root/res/offmode_charging_images/charging_00.png \
-    device/htc/holiday/prebuilt/recovery/root/res/offmode_charging_images/charging_01.png:recovery/root/res/offmode_charging_images/charging_01.png \
-    device/htc/holiday/prebuilt/recovery/root/res/offmode_charging_images/charging_02.png:recovery/root/res/offmode_charging_images/charging_02.png \
-    device/htc/holiday/prebuilt/recovery/root/res/offmode_charging_images/charging_03.png:recovery/root/res/offmode_charging_images/charging_03.png \
-    device/htc/holiday/prebuilt/recovery/root/res/offmode_charging_images/charging_04.png:recovery/root/res/offmode_charging_images/charging_04.png \
-    device/htc/holiday/prebuilt/recovery/root/res/offmode_charging_images/charging_05.png:recovery/root/res/offmode_charging_images/charging_05.png \
-    device/htc/holiday/prebuilt/recovery/root/res/offmode_charging_images/charging_06.png:recovery/root/res/offmode_charging_images/charging_06.png \
-    device/htc/holiday/prebuilt/recovery/root/res/offmode_charging_images/charging_07.png:recovery/root/res/offmode_charging_images/charging_07.png \
-    device/htc/holiday/prebuilt/recovery/root/res/offmode_charging_images/charging_08.png:recovery/root/res/offmode_charging_images/charging_08.png \
-    device/htc/holiday/prebuilt/recovery/root/res/offmode_charging_images/charging_09.png:recovery/root/res/offmode_charging_images/charging_09.png \
-    device/htc/holiday/prebuilt/recovery/root/res/offmode_charging_images/error.png:recovery/root/res/offmode_charging_images/error.png
-
-# bootanimation
-PRODUCT_COPY_FILES += \
-    device/htc/holiday/prebuilt/media/bootanimation.zip:system/media/bootanimation.zip
-
-#Add touchscreen config file
-PRODUCT_COPY_FILES += \
-    device/htc/holiday/prebuilt/system/usr/idc/cy8c-touchscreen.idc:system/usr/idc/cy8c-touchscreen.idc
-
-# Keylayouts
-PRODUCT_COPY_FILES += \
-    device/htc/holiday/prebuilt/system/usr/keychars/qwerty2.kcm.bin:system/usr/keychars/qwerty2.kcm.bin \
-    device/htc/holiday/prebuilt/system/usr/keychars/qwerty.kcm.bin:system/usr/keychars/qwerty.kcm.bin \
-    device/htc/holiday/prebuilt/system/usr/keychars/holiday-keypad.kcm.bin:system/usr/keychars/holiday-keypad.kcm.bin \
-    device/htc/holiday/prebuilt/system/usr/keychars/BT_HID.kcm.bin:system/usr/keychars/BT_HID.kcm.bin \
-    device/htc/holiday/prebuilt/system/usr/keylayout/h2w_headset.kl:system/usr/keylayout/h2w_headset.kl \
-    device/htc/holiday/prebuilt/system/usr/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
-    device/htc/holiday/prebuilt/system/usr/keylayout/holiday-keypad.kl:system/usr/keylayout/holiday-keypad.kl \
-    device/htc/holiday/prebuilt/system/usr/keylayout/BT_HID.kl:system/usr/keylayout/BT_HID.kl \
-    device/htc/holiday/prebuilt/system/usr/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl
+    device/htc/holiday/keylayout/keychars/qwerty2.kcm.bin:system/usr/keychars/qwerty2.kcm.bin \
+    device/htc/holiday/keylayout/keychars/qwerty.kcm.bin:system/usr/keychars/qwerty.kcm.bin \
+    device/htc/holiday/keylayout/keychars/holiday-keypad.kcm.bin:system/usr/keychars/holiday-keypad.kcm.bin \
+    device/htc/holiday/keylayout/keychars/BT_HID.kcm.bin:system/usr/keychars/BT_HID.kcm.bin \
+    device/htc/holiday/keylayout/keylayout/h2w_headset.kl:system/usr/keylayout/h2w_headset.kl \
+    device/htc/holiday/keylayout/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
+    device/htc/holiday/keylayout/keylayout/holiday-keypad.kl:system/usr/keylayout/holiday-keypad.kl \
+    device/htc/holiday/keylayout/keylayout/BT_HID.kl:system/usr/keylayout/BT_HID.kl \
+    device/htc/holiday/keylayout/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl
 
 # Keylayout hack for home button
 PRODUCT_COPY_FILES += \
-    device/htc/holiday/prebuilt/system/usr/keylayout/Generic.kl:system/usr/keylayout/Generic.kl
+    device/htc/holiday/keylayout/keylayout/Generic.kl:system/usr/keylayout/Generic.kl
 
-## (2) Also get non-open-source GSM-specific aspects if available
-$(call inherit-product-if-exists, vendor/htc/holiday/holiday-vendor.mk)
+# Input device config
+PRODUCT_COPY_FILES += \
+    device/htc/holiday/idc/cy8c-touchscreen.idc:system/usr/idc/cy8c-touchscreen.idc
 
+# Filesystem management tools
+PRODUCT_PACKAGES += \
+   make_ext4fs \
+   e2fsck \
+   setup_fs
+
+# Permissions
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
+
+# Extra properties
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.com.google.locationfeatures=1 \
-	ro.setupwizard.enable_bypass=1 \
-	ro.media.dec.jpeg.memcap=20000000 \
-	dalvik.vm.lockprof.threshold=500 \
-	dalvik.vm.dexopt-flags=m=y \
-	ro.opengles.version=131072
+    ro.setupwizard.enable_bypass=1 \
+    ro.com.google.locationfeatures=1 \
+    persist.sys.scrollingcache=3 \
+    dalvik.vm.lockprof.threshold=500 \
+    dalvik.vm.dexopt-flags=m=y
 
-DEVICE_PACKAGE_OVERLAYS += device/htc/holiday/overlay
-
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
-    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
-    frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
-    frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
-    frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
-    frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
-    frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
-    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml \
-    frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
-    frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
-#
-# media config xml file
-PRODUCT_COPY_FILES += \
-    device/htc/holiday/configs/media_profiles.xml:system/etc/media_profiles.xml \
-    device/htc/holiday/configs/media_codecs.xml:system/etc/media_codecs.xml
-
-# we have enough storage space to hold precise GC data
+# We have enough space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
-PRODUCT_LOCALES += en
+# Set build date
+PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
-# fstab for internal & external sd
-PRODUCT_COPY_FILES += \
-    device/htc/holiday/configs/vold.fstab:system/etc/vold.fstab
+# Device uses high-density artwork where available
+PRODUCT_AAPT_CONFIG := normal hdp
+PRODUCT_AAPT_PREF_CONFIG := hdpi
+PRODUCT_LOCALES += en_US
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := device/htc/holiday/prebuilt/root/kernel
-else
-	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
-
-# media profiles and capabilities spec
-$(call inherit-product, device/htc/holiday/media_a1026.mk)
+# call the proprietary setup
+$(call inherit-product-if-exists, vendor/htc/holiday/holiday-vendor.mk)
 
 # call dalvik heap config
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
-# htc audio settings
-$(call inherit-product, device/htc/holiday/media_htcaudio.mk)
-
-$(call inherit-product, build/target/product/full_base.mk)
+PRODUCT_NAME := htc_holiday
+PRODUCT_DEVICE := holiday

@@ -18,7 +18,7 @@ $(call inherit-product, device/htc/holiday/device_holiday.mk)
 PRODUCT_DEVICE := holiday
 PRODUCT_NAME := cf_holiday
 PRODUCT_BRAND := htc
-PRODUCT_MODEL := HTC Vivid
+PRODUCT_MODEL := HTC Holiday
 PRODUCT_MANUFACTURER := HTC
 
 # Set build fingerprint / ID / Product Name etc.
