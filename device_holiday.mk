@@ -14,9 +14,11 @@
 # limitations under the License.
 #
 
+# Inherit Common
+$(call inherit-product, device/htc/holiday/BoardConfig.mk)
 
 PRODUCT_AAPT_CONFIG := normal hdpi
-PRODUCT_AAPT_PREF_CONFIG := hdpivold
+PRODUCT_AAPT_PREF_CONFIG := hdpi
 
 # common msm8660 configs
 $(call inherit-product, device/htc/msm8660-common/msm8660.mk)
