@@ -7,6 +7,9 @@ TARGET_BOOTANIMATION_NAME := vertical-540x960
 # Inherit device configuration
 $(call inherit-product, device/htc/holiday/device_holiday.mk)
 
+# Specify phone tech
+$(call inherit-product, vendor/cm/config/gsm.mk)
+
 # Device naming
 PRODUCT_DEVICE := holiday
 PRODUCT_NAME := cm_holiday
