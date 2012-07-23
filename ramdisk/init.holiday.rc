@@ -449,3 +449,8 @@ service htc_ebdlogd_rel /system/bin/htc_ebdlogd -s -k
     disabled
     oneshot
     ioprio idle 0
+
+on proprty:service.adb.root=1
+    write /sys/class/android_usb/android0/enable 0
+    restart adbd
+    write /sys/class/android_usb/android0/enable 1
