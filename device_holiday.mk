@@ -14,8 +14,11 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# common msm8660 configs
+# Inherit common msm8660 configs
 $(call inherit-product, device/htc/msm8660-common/msm8660.mk)
+
+# Inherit qcom proprietary blobs
+$(call inherit-product, vendor/qcom/proprietary/qcom-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/htc/holiday/overlay
 
