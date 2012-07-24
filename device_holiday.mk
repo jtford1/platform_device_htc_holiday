@@ -111,10 +111,6 @@ endif
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
-# Keylayout hack for home button
-PRODUCT_COPY_FILES += \
-    device/htc/holiday/keylayout/keylayout/Generic.kl:system/usr/keylayout/Generic.kl
-
 # Input device config
 PRODUCT_COPY_FILES += \
     device/htc/holiday/idc/cy8c-touchscreen.idc:system/usr/idc/cy8c-touchscreen.idc
