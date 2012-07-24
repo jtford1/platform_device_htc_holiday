@@ -64,7 +64,14 @@ on emmc-fs
     symlink /vendor/firmware/misc_mdm/image/amss.mbn /vendor/firmware/amss.mbn
     symlink /vendor/firmware/misc_mdm/image/htcssmem.mbn /vendor/firmware/htcssmem.mbn
 
-on post-fs
+on post-fs-data
+    # double check the perms and set owner
+    chown root root /devlog
+    chmod 0700 /devlog
+
+    # Set indication that we have finished previous actions
+    setprop vold.post_fs_done 1
+
     wait /dev/ttyHSL1
     mkdir /data/qcks 0770 system system
     exec /system/bin/logwrapper /system/bin/htc_ext4_fsck
@@ -179,10 +186,6 @@ on post-fs
     # for charging function
     chown radio radio /sys/module/htc_battery_8x60/parameters/phone_call
     chmod 0660 /sys/module/htc_battery_8x60/parameters/phone_call
-
-    # double check the perms and set owner
-    chown root root /devlog
-    chmod 0700 /devlog
 
     #for CIQ ipc
     #mkdir /app-cache/ciq 0711 root system
