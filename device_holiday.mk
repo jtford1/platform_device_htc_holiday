@@ -144,7 +144,7 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 # Device uses high-density artwork where available
-PRODUCT_AAPT_CONFIG := normal hdp
+PRODUCT_AAPT_CONFIG := normal hdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 PRODUCT_LOCALES += en_US
 
