@@ -27,7 +27,7 @@ on emmc-fs
     mkdir /vendor/firmware/misc_mdm 0771 system system
 
     #mount the whole thing
-    mount_all /fstab.holiday
+    mount_all fstab.holiday
 
     chown radio diag /dev/block/mmcblk0p16
     chmod 0460 /dev/block/mmcblk0p16
@@ -263,6 +263,8 @@ on post-fs-data
     setprop net.tcp.buffersize.evdo_b  4094,87380,262144,4096,16384,262144
     setprop net.tcp.buffersize.wimax   4096,221184,524288,4096,16384,110208
 
+# Services start here
+
 # Force loading of modem and Q6 images
 service load-modem /system/bin/load-modem.sh
     class main
@@ -387,7 +389,6 @@ service zchgd_onmode /system/bin/zchgd -onmode
     user root
     oneshot
 
-#+HTC_RIL: from QCT Fusion
 service qmuxd /system/bin/qmuxd
     class main
     user radio
