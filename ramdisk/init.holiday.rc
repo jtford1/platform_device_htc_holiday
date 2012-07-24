@@ -17,7 +17,7 @@ on early-init
 on emmc-fs
     mkdir /devlog 0700 root root
 
-    #8x60: firmware
+    #msm8660: firmware
     rm /vendor
     mkdir /vendor                   0771 system system
     mkdir /vendor/etc               0771 system system
@@ -27,7 +27,7 @@ on emmc-fs
     mkdir /vendor/firmware/misc_mdm 0771 system system
 
     #mount the whole thing
-    mount_all fstab.holiday
+    mount_all /fstab.holiday
 
     chown radio diag /dev/block/mmcblk0p16
     chmod 0460 /dev/block/mmcblk0p16
