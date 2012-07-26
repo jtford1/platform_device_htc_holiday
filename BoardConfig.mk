@@ -46,6 +46,7 @@ BOARD_KERNEL_BASE := 0x48000000
 BOARD_PAGE_SIZE := 2048
 
 TARGET_PREBUILT_KERNEL := device/htc/holiday/prebuilt/kernel
+TARGET_PREBUILT_RECOVERY_KERNEL := device/htc/holiday/recovery/recoverykernel
 #TARGET_KERNEL_CONFIG := kangbang_defconfig
 #TARGET_KERNEL_SOURCE := kernel/htc/holiday
 
