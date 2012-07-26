@@ -14,14 +14,11 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# common msm8960 configs
+# Inherit common msm8660 configs
 $(call inherit-product, device/htc/msm8660-common/msm8660.mk)
 
-# Specify phone tech
-$(call inherit-product, vendor/codefire/config/gsm.mk)
-
-# inherit codefire stuff
-$(call inherit-product, vendor/codefire/config/common_full_phone.mk)
+# Inherit qcom proprietary blobs
+$(call inherit-product, vendor/qcom/proprietary/qcom-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/htc/holiday/overlay
 
@@ -114,10 +111,6 @@ endif
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
-# Keylayout hack for home button
-PRODUCT_COPY_FILES += \
-    device/htc/holiday/keylayout/keylayout/Generic.kl:system/usr/keylayout/Generic.kl
-
 # Input device config
 PRODUCT_COPY_FILES += \
     device/htc/holiday/idc/cy8c-touchscreen.idc:system/usr/idc/cy8c-touchscreen.idc
@@ -147,7 +140,7 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 # Device uses high-density artwork where available
-PRODUCT_AAPT_CONFIG := normal hdp
+PRODUCT_AAPT_CONFIG := normal hdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 PRODUCT_LOCALES += en_US
 
@@ -156,16 +149,3 @@ $(call inherit-product-if-exists, vendor/htc/holiday/holiday-vendor.mk)
 
 # call dalvik heap config
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
-
-# Set build fingerprint / ID / Product Name etc.
-PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=htc_holiday BUILD_FINGERPRINT=cingular_us/htc_holiday/holiday:4.0.3/IML74K/302737.56:user/release-keys PRIVATE_BUILD_DESC="3.26.502.56 CL302737 release-keys"
-
-# Release name
-PRODUCT_RELEASE_NAME := holiday
-
-# Device naming
-PRODUCT_DEVICE := holiday
-PRODUCT_NAME := cf_holiday
-PRODUCT_BRAND := htc
-PRODUCT_MODEL := HTC Holiday
-PRODUCT_MANUFACTURER := HTC

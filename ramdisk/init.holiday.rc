@@ -17,7 +17,7 @@ on early-init
 on emmc-fs
     mkdir /devlog 0700 root root
 
-    #8x60: firmware
+    #msm8660: firmware
     rm /vendor
     mkdir /vendor                   0771 system system
     mkdir /vendor/etc               0771 system system
@@ -64,7 +64,14 @@ on emmc-fs
     symlink /vendor/firmware/misc_mdm/image/amss.mbn /vendor/firmware/amss.mbn
     symlink /vendor/firmware/misc_mdm/image/htcssmem.mbn /vendor/firmware/htcssmem.mbn
 
-on post-fs
+on post-fs-data
+    # double check the perms and set owner
+    chown root root /devlog
+    chmod 0700 /devlog
+
+    # Set indication that we have finished previous actions
+    setprop vold.post_fs_done 1
+
     wait /dev/ttyHSL1
     mkdir /data/qcks 0770 system system
     exec /system/bin/logwrapper /system/bin/htc_ext4_fsck
@@ -180,10 +187,6 @@ on post-fs
     chown radio radio /sys/module/htc_battery_8x60/parameters/phone_call
     chmod 0660 /sys/module/htc_battery_8x60/parameters/phone_call
 
-    # double check the perms and set owner
-    chown root root /devlog
-    chmod 0700 /devlog
-
     #for CIQ ipc
     #mkdir /app-cache/ciq 0711 root system
     #mkdir /app-cache/ciq/socket 0777 root system
@@ -259,6 +262,8 @@ on post-fs
     setprop net.tcp.buffersize.lte     4096,221184,3461120,4096,221184,3461120
     setprop net.tcp.buffersize.evdo_b  4094,87380,262144,4096,16384,262144
     setprop net.tcp.buffersize.wimax   4096,221184,524288,4096,16384,110208
+
+# Services start here
 
 # Force loading of modem and Q6 images
 service load-modem /system/bin/load-modem.sh
@@ -384,7 +389,6 @@ service zchgd_onmode /system/bin/zchgd -onmode
     user root
     oneshot
 
-#+HTC_RIL: from QCT Fusion
 service qmuxd /system/bin/qmuxd
     class main
     user radio

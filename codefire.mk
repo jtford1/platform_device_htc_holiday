@@ -1,25 +1,25 @@
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+# Specify phone tech before including full_phone
+$(call inherit-product, vendor/codefire/config/gsm.mk)
+
+# Release name
+PRODUCT_RELEASE_NAME := holiday
 
 # Preload bootanimation
 TARGET_BOOTANIMATION_PRELOAD := true
 TARGET_BOOTANIMATION_NAME := vertical-540x960
 
+# Inherit some common CM stuff.
+$(call inherit-product, vendor/codefire/config/common_full_phone.mk)
+
 # Inherit device configuration
 $(call inherit-product, device/htc/holiday/device_holiday.mk)
 
-# Specify phone tech
-$(call inherit-product, vendor/cm/config/gsm.mk)
-
 # Device naming
 PRODUCT_DEVICE := holiday
-PRODUCT_NAME := cm_holiday
+PRODUCT_NAME := cf_holiday
 PRODUCT_BRAND := htc
-PRODUCT_MODEL := Holiday
+PRODUCT_MODEL := HTC Holiday
 PRODUCT_MANUFACTURER := HTC
 
-# Set build fingerprint / ID / Product Name ect.
+# Set build fingerprint / ID / Product Name etc.
 PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=htc_holiday BUILD_FINGERPRINT=cingular_us/htc_holiday/holiday:4.0.3/IML74K/302737.56:user/release-keys PRIVATE_BUILD_DESC="3.26.502.56 CL302737 release-keys"
-
-# Release name
-PRODUCT_RELEASE_NAME := holiday
--include vendor/cm/config/common_versions.mk
