@@ -15,4 +15,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/codefire.mk
+    $(LOCAL_DIR)/device_holiday.mk
