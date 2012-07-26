@@ -127,8 +127,13 @@ PRODUCT_COPY_FILES += \
 # Filesystem management tools
 PRODUCT_PACKAGES += \
    make_ext4fs \
+   FileManager \
    e2fsck \
    setup_fs
+
+# Build Filemanager for Holiday
+PRODUCT_PACKAGES += \
+   FileManager
 
 # Permissions
 PRODUCT_COPY_FILES += \
