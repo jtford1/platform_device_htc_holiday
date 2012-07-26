@@ -101,6 +101,10 @@ PRODUCT_COPY_FILES += \
     device/htc/holiday/keylayout/keylayout/BT_HID.kl:system/usr/keylayout/BT_HID.kl \
     device/htc/holiday/keylayout/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl
 
+# Hack for home button
+PRODUCT_COPY_FILES += \
+    device/htc/holiday/keylayout/keylayout/Generic.kl:system/usr/keylayout/Generic.kl
+
 # Kernel
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 	LOCAL_KERNEL := device/htc/holiday/prebuilt/kernel
