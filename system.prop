@@ -78,10 +78,6 @@ htc.audio.q6.topology=0
 ro.ril.enable.prl.recognition = 1
 ro.ril.att.feature = 1
 
-# cm qcom build lub
-com.qc.hardware=true
-com.qc.hdmi_out=true
-
 # system props for telephony modules
 ro.config.lte=true
 # device supports simultaneous 1x voice + LTE
