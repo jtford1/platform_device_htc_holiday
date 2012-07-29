@@ -35,6 +35,19 @@ PRODUCT_COPY_FILES += device/common/gps/gps.conf_US:system/etc/gps.conf
 # HTC BT audio config
 PRODUCT_COPY_FILES += device/htc/holiday/configs/AudioBTID.csv:system/etc/AudioBTID.csv
 
+# AudioHAL from CM9 for working audio
+PRODUCT_COPY_FILES += \
+    device/htc/holiday/prebuilt/audiohal/audio.a2dp.default.so:system/lib/hw/audio.a2dp.default.so \
+    device/htc/holiday/prebuilt/audiohal/audio.primary.default.so:system/lib/hw/audio.primary.default.so \
+    device/htc/holiday/prebuilt/audiohal/audio.primary.msm8660.so:system/lib/hw/audio.primary.msm8660.so \
+    device/htc/holiday/prebuilt/audiohal/audio_policy.default.so:system/lib/hw/audio_policy.default.so \
+    device/htc/holiday/prebuilt/audiohal/audio_policy.msm8660.so:system/lib/hw/audio_policy.msm8660.so \
+    device/htc/holiday/prebuilt/audiohal/audio.a2dp.default.so:obj/lib/hw/audio.a2dp.default.so \
+    device/htc/holiday/prebuilt/audiohal/audio.primary.default.so:obj/lib/hw/audio.primary.default.so \
+    device/htc/holiday/prebuilt/audiohal/audio.primary.msm8660.so:obj/lib/hw/audio.primary.msm8660.so \
+    device/htc/holiday/prebuilt/audiohal/audio_policy.default.so:obj/lib/hw/audio_policy.default.so \
+    device/htc/holiday/prebuilt/audiohal/audio_policy.msm8660.so:obj/lib/hw/audio_policy.msm8660.so
+
 # vold config
 PRODUCT_COPY_FILES += \
     device/htc/holiday/configs/vold.fstab:system/etc/vold.fstab
