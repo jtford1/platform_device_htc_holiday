@@ -50,7 +50,7 @@ persist.rild.ril.ltedrtable=max_retries=infinite,10000
 ro.use_data_netmgrd=true
 persist.data_netmgrd_nint=11
 
-# holiday RF team request	
+# Holiday RIL	
 ro.ril.enable.dtm = 0	  	
 ro.ril.gprsclass = 12	  	
 ro.ril.hsdpa.category = 14	  	
@@ -66,7 +66,7 @@ ro.telephony.default_network=0
 ro.ril.ciq=1
 persist.pdn.profile=pta
 ro.ril.disable.cpc=1
-ro.ril.enable.sdr=0
+ro.ril.enable.sdr=1
 ro.ril.enable.gea3=1
 ro.ril.enable.ucsq=2
 ro.ril.set.mtusize=1410
@@ -75,6 +75,7 @@ htc.audio.global.state=0
 htc.audio.q6.topology=0
 ro.ril.enable.prl.recognition = 1
 ro.ril.att.feature = 1
+ro.ril.enable.amr.wideband=0
 
 # system props for telephony modules
 ro.config.lte=true
