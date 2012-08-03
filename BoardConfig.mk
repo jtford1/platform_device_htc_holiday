@@ -61,9 +61,6 @@ BOARD_USE_LEGACY_TOUCHSCREEN := true
 # GPS
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := holiday
 
-# Lights
-TARGET_PROVIDES_LIBLIGHTS := true
-
 # USB
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun%d/file
 
